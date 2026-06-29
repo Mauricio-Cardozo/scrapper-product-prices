@@ -1,6 +1,14 @@
 # Dropi Scraper 🐾
 
-Extrae **nombre, precio y stock** de productos en app.dropi.ar usando Playwright.
+Dropi y plataformas similares cargan sus catálogos dinámicamente — no se pueden scrapear con `requests` simples. Esta herramienta resuelve eso: extrae precios, stock y SKU automáticamente y los exporta listos para analizar, evitando horas de carga manual de inventario.
+
+Si sos un negocio que revende productos de Dropi, sabés lo tedioso que es copiar precio por precio a tu planilla. Acá tenés el catálogo completo en segundos.
+
+## Capturas
+
+![El scraper abre Chrome y espera el login manual con 2FA](screenshots/test-output.png)
+![Productos scrapeados desde la terminal](screenshots/terminal-output.png)
+![Catálogo exportado a Excel listo para analizar](screenshots/csv-excel.png)
 
 ## ¿Cómo funciona?
 
@@ -87,6 +95,16 @@ id,nombre,precio_dropshipping,precio_sugerido,stock,categoria,sku,marca,url,fech
 11089,Manopla Quita Pelos Mascotas,0,8540,N/A,Mascotas,MAyK 00134,,https://app.dropi.ar/dashboard/product-details/11089/,2026-06-14 23:52:53
 1837,Corral Plegable para Mascotas (CHICA),0,1,N/A,Mascotas,Fordablepetplayten,,https://app.dropi.ar/dashboard/product-details/1837/,2026-06-14 23:52:53
 ```
+
+## Presentación del catálogo
+
+Para obtener un CSV limpio listo para compartir (ordenado alfabéticamente, sin columnas vacías):
+
+```bash
+python clean_csv.py
+```
+
+Toma el último CSV generado y produce `output/dropi_*_clean.csv` con solo las columnas útiles: nombre, precio sugerido, SKU, categoría, URL y fecha.
 
 ## Tips
 
